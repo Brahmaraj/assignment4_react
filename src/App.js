@@ -6,7 +6,6 @@ import {Header} from "./Components/Header";
 import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
 import {NoSuchPage} from "./Components/NoSuchPage";
 import EditData from "./Components/EditData";
-import InputData from "./Components/InputData";
 
 const App = () => {
     return (
