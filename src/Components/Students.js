@@ -1,77 +1,61 @@
-import React, {Component} from "react";
-import Details from "./Details";
+import React, { useContext } from "react";
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import { Link, useNavigate } from "react-router-dom";
+import { students_data } from "./StudentContext";
 
-class Students extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            name:'',
-            age:'',
-            course:'',
-            batch:'',
-            id:'',
-            arrayOfStudents:[
-                {
-                    name:'John',
-                    age:'24',
-                    course:'MERN',
-                    batch:'October',
-                    id:'1',
-                },
-                {
-                    name:'Doe',
-                    age:'25',
-                    course:'MERN',
-                    batch:'November',
-                    id:'2',
-                },
-                {
-                    name:'Biden',
-                    age:'26',
-                    course:'MERN',
-                    batch:'September',
-                    id:'3',
-                },
-                {
-                    name:'Barar',
-                    age:'22',
-                    course:'MERN',
-                    batch:'September',
-                    id:'4',
-                },
-                {
-                    name:'Christ',
-                    age:'23',
-                    course:'MERN',
-                    batch:'October',
-                    id:'5',
-                },
-                {
-                    name:'Elent',
-                    age:'24',
-                    course:'MERN',
-                    batch:'November',
-                    id:'6',
-                }
-            ]
-        };
-    };
 
-    render(){
-        return (
-            <div id="students_container">
-                <h1>Students Detail</h1>
-                <div className="students_white_rows">
-                    <div className="name inner_white_rows">Name</div>
-                    <div className="age inner_white_rows">Age</div>
-                    <div className="course inner_white_rows">Courses</div>
-                    <div className="batch inner_white_rows">Batch</div>
-                    <div className="change inner_white_rows">Change</div>
-                </div>
-                <Details data={this.state.arrayOfStudents}/>
-            </div>
-        );
-    };
-};
 
-export default Students;
+
+export default function BasicTable() {
+
+  let navigate = useNavigate();
+
+  const [students, setStudents] = useContext(students_data);
+
+  console.log(students);
+
+  const addStudentHandler = () => {
+    navigate(`/student-desc`)
+  }
+
+  return (
+      <>
+      <button className="student_add_button" onClick={addStudentHandler}>Add button</button>
+    <TableContainer component={Paper} style={{margin:"100px auto",width:"90vw"}}>
+      <Table sx={{ minWidth: 650 }} aria-label="simple table" >
+        <TableHead>
+          <TableRow>
+            <TableCell component="th" scope="row">Name</TableCell>
+            <TableCell align="right">Age</TableCell>
+            <TableCell align="right">Course</TableCell>
+            <TableCell align="right">Batch</TableCell>
+            <TableCell align="right">Change</TableCell>
+          </TableRow>
+        </TableHead>
+        <TableBody>
+          {students.map((student,index) => (
+            <TableRow
+              key={index}
+              sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+            >
+              <TableCell component="th" scope="row">
+                {student.name}
+              </TableCell>
+              <TableCell align="right">{student.age}</TableCell>
+              <TableCell align="right">{student.course}</TableCell>
+              <TableCell align="right">{student.batch}</TableCell>
+              <TableCell align="right"><Link to={"/student-desc/"+student.id}>edit</Link></TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    </TableContainer>
+    </>
+  );
+}
