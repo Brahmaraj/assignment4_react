@@ -85,6 +85,7 @@ export const EditData = () => {
                         <button className="button submit_button" onClick={submitHandler} type="submit">submit</button>
                     </div>
                 )
+            return null;
         })
     )
 };
