@@ -11,7 +11,7 @@ export const EditData = () => {
     let [age, setAge] = useState(students[selectedid-1].age)
     let [course, setCourse] = useState(students[selectedid-1].course)
     let [batch, setBatch] = useState(students[selectedid-1].batch)    
-    let [tempObj, setTempObj] = useState(students[selectedid-1])
+    let [tempObj] = useState(students[selectedid-1])
 
     
 

@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React from "react";
 import Home from "./Components/Home";
 import Students from "./Components/Students";
 import {Contact} from "./Components/Contact";

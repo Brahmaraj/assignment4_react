@@ -16,7 +16,7 @@ export default function BasicTable() {
 
   let navigate = useNavigate();
 
-  const [students, setStudents] = useContext(students_data);
+  const [students] = useContext(students_data);
 
   console.log(students);
 

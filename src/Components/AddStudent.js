@@ -10,7 +10,7 @@ export const AddStudent = () => {
     let [age, setAge] = useState("")
     let [course, setCourse] = useState("")
     let [batch, setBatch] = useState("")    
-    let [tempObj, setTempObj] = useState({})
+    let [tempObj] = useState({})
 
     
 
