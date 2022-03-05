@@ -5,7 +5,7 @@ import { students_data } from "./StudentContext";
 export const AddStudent = () => {
 
     const navigate = useNavigate();
-    const [students, setStudents] = useContext(students_data);
+    let [students, setStudents] = useContext(students_data);
     let [name, setName] = useState("")
     let [age, setAge] = useState("")
     let [course, setCourse] = useState("")
@@ -43,7 +43,6 @@ export const AddStudent = () => {
     
 
     const submitHandler = () => {
-        // event.preventdefault();
         console.log(name,age,course,batch)
         console.log(tempObj)
         tempObj= {
@@ -51,22 +50,17 @@ export const AddStudent = () => {
             age,
             course,
             batch,
-            id:students.length+1
+            id:String(students.length+1)
         }
-        setStudents([...students,tempObj])
+        // students = [...students, tempObj]
+        setStudents(tempObj)
+        console.log(tempObj)
         navigate("/students")
     }
 
     const goBackHandler = () => {
-        // event.preventdefault();
         navigate("/students")
     }
-
-    
-
-    // setStudents({
-
-    // })
 
     return(
             <div>

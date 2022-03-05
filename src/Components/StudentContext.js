@@ -4,7 +4,7 @@ export const students_data = createContext();
 
 export const StudentContext = (props) => {
 
-    const [students, setStudents] = useState([
+    let [students, setStudents] = useState([
         {
             name:'John',
             age:'24',
@@ -50,10 +50,14 @@ export const StudentContext = (props) => {
     ]
 );
 
+    const addStudentToArray = (obj) =>{
+        setStudents([...students,obj])
+    }
+
 
     return(
         <>
-        <students_data.Provider value={[students, setStudents]}>
+        <students_data.Provider value={[students, addStudentToArray]}>
             {props.children}
         </students_data.Provider>
         </>

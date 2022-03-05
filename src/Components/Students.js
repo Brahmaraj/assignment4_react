@@ -16,7 +16,7 @@ export default function BasicTable() {
 
   let navigate = useNavigate();
 
-  const [students] = useContext(students_data);
+  let [students] = useContext(students_data);
 
   console.log(students);
 
@@ -40,6 +40,7 @@ export default function BasicTable() {
         </TableHead>
         <TableBody>
           {students.map((student,index) => {
+            console.log(student)
             return (<>
             <TableRow
               key={index}

@@ -5,7 +5,7 @@ import { students_data } from "./StudentContext";
 export const EditData = () => {
 
     const navigate = useNavigate();
-    const [students, setStudents] = useContext(students_data);
+    let [students, setStudents] = useContext(students_data);
     const {selectedid} = useParams();
     let [name, setName] = useState(students[selectedid-1].name)
     let [age, setAge] = useState(students[selectedid-1].age)
@@ -52,7 +52,7 @@ export const EditData = () => {
             age,
             course,
             batch,
-            id:selectedid
+            id:String(selectedid)
         }
         console.log("temp obj"+tempObj.name)
         console.log(students.splice((selectedid-1),1,tempObj))
@@ -76,7 +76,6 @@ export const EditData = () => {
             if(student.id===selectedid)
                 return (
                     <div key={index}>
-                        
                         <input className="input_box name_input" placeholder="name" type="text" value={name} name="name" onChange={onNameChange}/>
                         <input className="input_box age_input" placeholder="age" type="number" name="age" value={age} onChange={onAgeChange}/>
                         <input className="input_box course_input" placeholder="course" type="text" name="course" value={course} onChange={onCourseChange}/>
