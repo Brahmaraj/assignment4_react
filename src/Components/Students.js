@@ -40,7 +40,7 @@ export default function BasicTable() {
         </TableHead>
         <TableBody>
           {students.map((student,index) => {
-            return <>
+            return (<>
             <TableRow
               key={index}
               sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
@@ -53,7 +53,7 @@ export default function BasicTable() {
               <TableCell align="right">{student.batch}</TableCell>
               <TableCell align="right"><Link to={"/student-desc/"+student.id}>edit</Link></TableCell>
             </TableRow>
-            </>
+            </>)
           })}
         </TableBody>
       </Table>
