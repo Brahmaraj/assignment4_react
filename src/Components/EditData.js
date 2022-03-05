@@ -5,7 +5,7 @@ import { students_data } from "./StudentContext";
 export const EditData = () => {
 
     const navigate = useNavigate();
-    let [students, setStudents] = useContext(students_data);
+    let [students] = useContext(students_data);
     const {selectedid} = useParams();
     let [name, setName] = useState(students[selectedid-1].name)
     let [age, setAge] = useState(students[selectedid-1].age)
@@ -56,7 +56,6 @@ export const EditData = () => {
         }
         console.log("temp obj"+tempObj.name)
         console.log(students.splice((selectedid-1),1,tempObj))
-        setStudents(students)
         navigate("/students")
     }
 
